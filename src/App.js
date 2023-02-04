@@ -1,9 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState,useRef, useEffect } from 'react';
 import './App.css';
 
 function App() {
   const [text, setText] = useState('');
   const [todo, setTodo] = useState([]);
+
+  const inputRef=useRef();
+
+  useEffect(()=>{
+    console.log(inputRef.current);
+    inputRef.current.focus();
+  },[])
+
 
 
   return (
@@ -19,6 +27,7 @@ function App() {
 
       <div className="input">
         <input type="text"
+        ref={inputRef}
           onChange={(e) => { setText(e.target.value) }}
           value={text}
           placeholder="🖊️ Add item..." />
